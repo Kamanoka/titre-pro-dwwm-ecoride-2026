@@ -3,21 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoRide - <?php echo $title ?? 'Covoiturage écologique'; ?></title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>EcoRide - <?= $title ?? 'Covoiturage écologique' ?></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-inter">
-    <header class="bg-emerald-600 text-white shadow-lg">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <h1 class="text-2xl font-bold font-poppins">EcoRide 🌿</h1>
-            </div>
-            <nav class="space-x-8">
-                <a href="index.php" class="hover:text-emerald-200 font-medium">Accueil</a>
-                <a href="recherche.php" class="hover:text-emerald-200 font-medium">Covoiturages</a>
-                <a href="connexion.php" class="hover:text-emerald-200 font-medium">Connexion</a>
-                <a href="contact.php" class="hover:text-emerald-200 font-medium">Contact</a>
-            </nav>
-        </div>
-    </header>
+<body class="bg-green-50 min-h-screen flex flex-col">
+
+<header class="bg-emerald-700 text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="index.php" class="text-2xl font-bold">EcoRide 🌿</a>
+        <nav class="space-x-6">
+            <a href="index.php" class="hover:text-emerald-200">Accueil</a>
+            <a href="recherche.php" class="hover:text-emerald-200">Covoiturages</a>
+            <?php if (estConnecte()): ?>
+                <a href="espace.php" class="hover:text-emerald-200">Mon espace</a>
+                <a href="deconnexion.php" class="hover:text-emerald-200">Déconnexion</a>
+            <?php else: ?>
+                <a href="connexion.php" class="hover:text-emerald-200">Connexion</a>
+                <a href="inscription.php" class="hover:text-emerald-200">Inscription</a>
+            <?php endif; ?>
+        </nav>
+    </div>
+</header>
+
+<main class="flex-grow max-w-7xl mx-auto px-4 py-8">
